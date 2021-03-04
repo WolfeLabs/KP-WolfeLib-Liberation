@@ -63,7 +63,7 @@ while {true} do {
     player setVariable ["KPLIB_ownedZeusModule", getAssignedCuratorLogic player];
 
     // Update state in Discord rich presence
-    [] call KPLIB_fnc_setDiscordState;
+    if (alive player) then {[] call KPLIB_fnc_setDiscordState};
 
     sleep 1;
 };

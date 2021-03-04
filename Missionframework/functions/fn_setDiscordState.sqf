@@ -17,9 +17,10 @@
 */
 
 params [
-    ["_state", "", [""]]
+    ["_state", "", [""]],
+    ["_details", "", [""]]
 ];
-_details = "";
+
 
 if (_state isEqualTo "") then {
     _state = "In the field";
@@ -36,6 +37,7 @@ if (_details isEqualTo  "") then {
         if !(player getVariable ["WL_PlayerRole",""] isEqualTo "") exitWith { _details = "Role: " + (player getVariable "WL_PlayerRole");};
     };
 };
+
 [
     ["UpdateState", _state],["UpdateDetails", _details]
 ] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);

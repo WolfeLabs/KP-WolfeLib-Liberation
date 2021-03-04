@@ -67,6 +67,10 @@ execVM "scripts\client\ui\tutorial_manager.sqf";
 execVM "scripts\client\markers\update_production_sites.sqf";
 
 player addMPEventHandler ["MPKilled", {_this spawn kill_manager;}];
+player addMPEventHandler ["MPKilled", {
+    if ((player getVariable ["KPLIB_fobName", ""] isEqualTo "") && !(player getVariable ["KPLIB_isNearStart", false]) ) then {["Awaiting Respawn..", "KIA" ] call KPLIB_fnc_setDiscordState;} else {
+        ["Awaiting Respawn..", "Dead" ] call KPLIB_fnc_setDiscordState;};
+}];
 player addEventHandler ["GetInMan", {[_this select 2] spawn kp_fuel_consumption;}];
 player addEventHandler ["GetInMan", {[_this select 2] call KPLIB_fnc_setVehiclesSeized;}];
 player addEventHandler ["GetInMan", {[_this select 2] call KPLIB_fnc_setVehicleCaptured;}];
