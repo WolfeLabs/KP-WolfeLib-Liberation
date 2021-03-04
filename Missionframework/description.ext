@@ -226,7 +226,7 @@ class CfgDebriefing {
 
 class CfgDiscordRichPresence {
     applicationID="816891452012494918";
-    defaultDetails="WolfeLib V6";
+    defaultDetails="";
     defaultState="Preparing...";
     defaultLargeImageKey="liberation1";
     defaultLargeImageText="KP/WolfeLib Liberation";
