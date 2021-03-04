@@ -23,7 +23,7 @@ params [
 if (_state isEqualTo "") then {
     _state = "In the field";
     [] call {
-        if (player getVariable ["KPLIB_isNearStart", false]) exitWith {_state = "Startbase";};
+        if (player getVariable ["KPLIB_isNearStart", false]) exitWith {_state = "On Board the USS YIFF";};
         if !(player getVariable ["KPLIB_fobName", ""] isEqualTo "") exitWith {_state = player getVariable "KPLIB_fobName";};
         if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith {_state = markerText (player getVariable "KPLIB_nearSector");};
     };

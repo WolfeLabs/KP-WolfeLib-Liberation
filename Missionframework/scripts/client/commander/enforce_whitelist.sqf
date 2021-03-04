@@ -51,7 +51,7 @@ if ( !isNull _target ) then {
 			
 			if ( _playerType == "B_solider_exp_F" ) then {
 				if ( ( getPlayerUID _target ) in wolfeEOD ) then {
-					player setVariable	["WL_PlayerRole", "EOD"];
+					player setVariable	["WL_PlayerRole", "EOD Tech"];
 					_idmatch = true;
 				};
 			};
