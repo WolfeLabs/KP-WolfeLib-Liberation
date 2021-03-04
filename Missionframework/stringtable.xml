@@ -7325,5 +7325,12 @@
 				<Spanish>No estás autorizado para usar el slot de en este servidor.</Spanish>
 				<Russian>Вы не авторизованы, чтобы использовать слот на этом сервере.</Russian>
 		</Key>
+        <Key ID="STR_GRABS_YOUR_RADIO_UWU">
+				<Original>-- GRAB RADIO FREQS --</Original>
+				<French>-- GRAB RADIO FREQUENCIES --</French>
+				<German>-- GRAB-FUNKFREQUENZEN --</German>
+				<Spanish>-- GRAB FRECUENCIAS DE RADIO --</Spanish>
+				<Russian>-- GRAB RADIO ЧАСТОТЫ --</Russian>
+		</Key>
     </Package>
 </Project>
