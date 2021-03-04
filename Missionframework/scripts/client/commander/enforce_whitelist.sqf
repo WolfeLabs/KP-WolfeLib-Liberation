@@ -1,24 +1,84 @@
-scriptName "[KPLIB] Enforce Whitelist";
+scriptName "[WolfeLib] Enforce Whitelist";
 
-[] call compileFinal preprocessFileLineNumbers "whitelist.sqf";
+private [ "_target", "_playerType", "_idmatch"];
 
-if (!GRLIB_use_whitelist) exitWith {};
-
-waitUntil {alive player};
+waitUntil { alive player };
 sleep 1;
 
-if (player isEqualTo ([] call KPLIB_fnc_getCommander) && !(serverCommandAvailable "#kick")) then {
+_target = player;
+_playerType = typeOf _target;
 
-    private _match = false;
+if ( !isNull _target ) then {
+	if (!([] call F_isAdmin)) then {
 
-    [] call {
-        if ((getPlayerUID player) in GRLIB_whitelisted_steamids) exitWith {_match = true;};
-        if ((name player) in GRLIB_whitelisted_names) exitWith {_match = true;};
-        if (!((squadParams player) isEqualTo []) && {(((squadParams player) select 0) select 0) in GRLIB_whitelisted_tags}) exitWith {_match = true;};
-    };
+		[] call compileFinal preprocessFileLineNumbers "Wolfe\roles\roles.sqf";
 
-    if (!_match) then {
-        sleep 1;
-        endMission "END1";
-    };
+		_idmatch = false;
+		while (!(_idmatch)) {
+			if ( !isNil "wolfeAdmins" ) then { 
+				if ( ( getPlayerUID _target ) in wolfeAdmins ) then { //Full Access, no typeOf checks.
+					_idmatch = true;
+				};
+			};
+			
+			if ( _playerType == "B_medic_F" ) then {
+				if ( ( getPlayerUID _target ) in wolfeMedics ) then {
+					_idmatch = true;
+				};
+			};
+
+			if ( _playerType == "B_engineer_F" ) then {
+				if ( ( getPlayerUID _target ) in wolfeEngineers ) then {
+					_idmatch = true;
+				};
+			};
+			
+			if ( _playerType == "B_recon_F" ) then {
+				if ( ( getPlayerUID _target ) in wolfeSnipers ) then {
+					_idmatch = true;
+				};
+			};
+			
+			if ( _playerType == "B_Helipilot_F" ) then {
+				if ( ( getPlayerUID _target ) in wolfePilots ) then {
+					_idmatch = true;
+				};
+			};
+			
+			if ( _playerType == "B_solider_exp_F" ) then {
+				if ( ( getPlayerUID _target ) in wolfeEOD ) then {
+					_idmatch = true;
+				};
+			};
+
+			if ( _playerType == "B_solider_UAV_F" ) then {
+				if ( ( getPlayerUID _target ) in wolfeUAV ) then {
+					_idmatch = true;
+				};
+			};
+
+			if ( _playerType == "B_crew_F" ) then {
+				if ( ( getPlayerUID _target ) in wolfeLogics ) then {
+					_idmatch = true;
+				};
+			};
+
+			if ( !isNil "wolfeCommanders" ) then { 
+				if ( ( getPlayerUID _target ) in wolfeCommanders ) then { // Full Access, they're trusted.
+					_idmatch = true;
+				};
+			};
+
+			if( _playerType == "B_Soldier_F" ) then { //Rifleman, No Checks Needed.
+					_idmatch = true;
+			};
+		};
+	if ( !(_idmatch ) ) then { //All Checks Failed, Lobby Kick.
+
+			sleep 1;
+			if ( alive _target ) then {
+				endMission "End2";
+			};
+		};
+	};
 };
