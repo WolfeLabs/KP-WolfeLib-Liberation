@@ -29,8 +29,15 @@ if (_state isEqualTo "") then {
     };
 };
 
+
+if (_details isEqualTo   "") then {
+    _details = "Selecting Service Role";
+    [] call {
+        if (player getVariable ["WL_PlayerRole",""] isEqualTo "") exitWith { _details = "Service Role: " + (player getVariable "WL_PlayerRole");};
+    };
+};
 [
-    ["UpdateState", _state]
+    ["UpdateState", _state],["UpdateDetails", _details]
 ] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);
 
 true
