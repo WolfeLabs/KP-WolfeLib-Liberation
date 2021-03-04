@@ -232,7 +232,7 @@ class CfgDiscordRichPresence {
     defaultLargeImageText="KP/WolfeLib Liberation";
     defaultSmallImageKey="a3_logo_whblk";
     defaultSmallImageText="Arma 3";
-    useTimeElapsed=1;
+    useTimeElapsed=0;
 };
 
 class CfgFunctions {
