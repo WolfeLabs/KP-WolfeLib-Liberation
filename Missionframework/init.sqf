@@ -39,12 +39,6 @@ if (!isDedicated && !hasInterface && isMultiplayer) then {
 };
 
 if (!isDedicated && hasInterface) then {
-    // Get mission version and readable world name for Discord rich presence
-    _min = (ceil (estimatedEndServerTime - serverTime) / 60);
-    [
-        ["UpdateDetails", [localize "STR_MISSION_VERSION", "on", getText (configfile >> "CfgWorlds" >> worldName >> "description")] joinString " "],
-        ["UpdateEndTimeStamp", [0,_min]]
-    ] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);
 
     // Add EH for curator to add kill manager and object init recognition for zeus spawned units/vehicles
     {
@@ -52,6 +46,7 @@ if (!isDedicated && hasInterface) then {
     } forEach allCurators;
 
     waitUntil {alive player};
+
     if (debug_source != name player) then {debug_source = name player};
     [] call compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
 } else {
