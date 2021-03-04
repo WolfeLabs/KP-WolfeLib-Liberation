@@ -31,9 +31,9 @@ if (_state isEqualTo "") then {
 };
 
 if (_details isEqualTo  "") then {
-    _details = "Selecting Service Role";
+    _details = "Waiting for role..";
     [] call {
-        if !(player getVariable ["WL_PlayerRole",""] isEqualTo "") exitWith { _details = "Service Role: " + (player getVariable "WL_PlayerRole");};
+        if !(player getVariable ["WL_PlayerRole",""] isEqualTo "") exitWith { _details = "Role: " + (player getVariable "WL_PlayerRole");};
     };
 };
 [
