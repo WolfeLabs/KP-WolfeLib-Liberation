@@ -225,12 +225,12 @@ class CfgDebriefing {
 };
 
 class CfgDiscordRichPresence {
-    applicationID="698133766975258664";
-    defaultDetails="";
+    applicationID="816891452012494918";
+    defaultDetails="WolfeLib V6";
     defaultState="Preparing...";
-    defaultLargeImageKey="liberation_logo";
-    defaultLargeImageText="KP Liberation";
-    defaultSmallImageKey="arma3_logo";
+    defaultLargeImageKey="liberation1";
+    defaultLargeImageText="KP/WolfeLib Liberation";
+    defaultSmallImageKey="a3_logo_whblk";
     defaultSmallImageText="Arma 3";
     useTimeElapsed=1;
 };
