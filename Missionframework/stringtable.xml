@@ -7317,5 +7317,13 @@
             <Spanish>Menú de Jugador KP v1.0.2\npor Wyqer</Spanish>
             <Czech>KP Player Menu v1.0.2\nby Wyqer</Czech>
         </Key>
+        <!-- Wolfe Touch Below -->
+        <Key ID="STR_NOT_AUTHORIZED">
+				<Original>You are not authorized to use this slot on this server.</Original>
+				<French>Vous n'êtes pas authorizé à utiliser la place de sur ce serveur.</French>
+				<German>Du bist auf diesem Server nicht als autorisiert.</German>
+				<Spanish>No estás autorizado para usar el slot de en este servidor.</Spanish>
+				<Russian>Вы не авторизованы, чтобы использовать слот на этом сервере.</Russian>
+		</Key>
     </Package>
 </Project>
