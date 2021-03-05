@@ -68,9 +68,24 @@ execVM "scripts\client\markers\update_production_sites.sqf";
 
 player addMPEventHandler ["MPKilled", {_this spawn kill_manager;}];
 player addMPEventHandler ["MPKilled", {
-    if ((player getVariable ["KPLIB_fobName", ""] isEqualTo "") && !(player getVariable ["KPLIB_isNearStart", false]) ) then {["Awaiting Respawn..", "KIA" ] call KPLIB_fnc_setDiscordState;} else {
-        ["Awaiting Respawn..", "Dead" ] call KPLIB_fnc_setDiscordState;};
-}];
+    _unit = _this select 0;
+    _killer = _this select 1;
+    switch (side _killer) do {
+        case GRLIB_side_friendly : {
+            ["Awaiting Respawn..", "Victim of Friendly Fire" ] call KPLIB_fnc_setDiscordState;
+        };
+        case GRLIB_side_enemy : {
+            ["Awaiting Respawn..", "KIA by OPFOR" ] call KPLIB_fnc_setDiscordState;
+        };
+        default {
+            if ((player getVariable ["KPLIB_fobName", ""] isEqualTo "") && !(player getVariable ["KPLIB_isNearStart", false]) ) then {
+                ["Awaiting Respawn..", "KIA" ] call KPLIB_fnc_setDiscordState;
+            } else {
+                 ["Awaiting Respawn..", "Dead" ] call KPLIB_fnc_setDiscordState;
+            };
+        };
+    };
+} ];
 player addEventHandler ["GetInMan", {[_this select 2] spawn kp_fuel_consumption;}];
 player addEventHandler ["GetInMan", {[_this select 2] call KPLIB_fnc_setVehiclesSeized;}];
 player addEventHandler ["GetInMan", {[_this select 2] call KPLIB_fnc_setVehicleCaptured;}];
