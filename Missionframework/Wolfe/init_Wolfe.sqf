@@ -6,6 +6,8 @@
 
 [] spawn compile preprocessFileLineNumbers "Wolfe\init_ACE_Spray.sqf"; //Ace3 Custom Sprays Init
 
+[] spawn compile preprocessFileLineNumbers "Wolfe\roles\RPC_SetRank.sqf";// setting discord rich presence rank and role
+
 estimatedTimeLeft 21600; // 6 hours to restart, bois
 
 waitUntil { alive player};
