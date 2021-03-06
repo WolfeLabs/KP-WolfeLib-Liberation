@@ -23,34 +23,42 @@ params [
 
 
 if (_state isEqualTo "") then {
-    _state = "In the field between sectors"; //Roaming
+    _state = "In the field"; //Roaming
     [] call {
         if (player getVariable ["KPLIB_isNearStart", false]) exitWith { //On Starter Boat
+                ["large","startbase","USS Yiff"] call WL_RPC_SetImage;
                 _state = "Aboard the USS Yiff";
         };
         if (vehicle player isKindOf "Air") exitWith { //Flying
             _state = "Flying between sectors";
             _prefix = "Flying near ";
-            if !(player getVariable ["KPLIB_fobName", ""] isEqualTo "") exitWith {
+            if !(player getVariable ["KPLIB_fobName", ""] isEqualTo "") exitWith { //Flying near FOB
+                ["large","flyingheli","By FOBs"] call WL_RPC_SetImage;
                 _fobName = (player getVariable "KPLIB_fobName");
                 _state = _prefix + _fobName;
             };
-            if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith {    
+            if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith { //Flying near Sectors
+                ["large","flyingheli","Near Sectors"] call WL_RPC_SetImage;
                 _zoneSite = (markerText (player getVariable "KPLIB_nearSector"));
                 _state = _prefix + _zoneSite; 
             };
+            if (_state isEqualTo "Flying between sectors") then { //Flying Elsewhere
+                ["large", "flyingheli", "Flying"] call WL_RPC_SetImage;
+            };
         };
         if !(player getVariable ["KPLIB_fobName", ""] isEqualTo "") exitWith { //Near FOB
+                ["large","liberation1","In Game"] call WL_RPC_SetImage;
                 _prefix = "At ";
                 _fobName = str (player getVariable "KPLIB_fobName");
                 _state = _prefix + _fobName;
         };
         if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith { //In Sector
+                ["large","liberation1","In Game"] call WL_RPC_SetImage;
                 _zoneOwned = "";
-                    if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_friendly ) then { _zoneOwned = "Holding Friendly Sector "};
-                    if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_enemy ) then { _zoneOwned = "Attacking Enemy Sector " };
-                    if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_resistance ) then { _zoneOwned = "In Independent Sector "};
-                _zoneSite = str (markerText (player getVariable "KPLIB_nearSector"));
+                    if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_friendly ) then { _zoneOwned = "Patrolling "};
+                    if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_enemy ) then { _zoneOwned = "Attacking " };
+                    if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_resistance ) then { _zoneOwned = "Attacking "};
+                _zoneSite = (markerText (player getVariable "KPLIB_nearSector"));
                 _state = _zoneOwned + _zoneSite;
         };    
     };
