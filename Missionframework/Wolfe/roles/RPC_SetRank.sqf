@@ -47,9 +47,6 @@ if (_SIT isEqualTo "") then {
     };
 };
 
-
-[
-	["UpdateSmallImageKey", _SIK],["UpdateSmallImageText", _SIT]
-] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);
+["small", _SIK, _SIT] call WL_RPC_SetImage;
 
 true
