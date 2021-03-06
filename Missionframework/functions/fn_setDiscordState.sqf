@@ -64,10 +64,15 @@ if (_state isEqualTo "") then {
     };
 };
 
-if (_details isEqualTo  "") then {
+if (_details isEqualTo  "") then { //Fresh startup, loading..
     _details = "Waiting for role..";
     [] call {
-        if !(player getVariable ["WL_PlayerRole",""] isEqualTo "") exitWith { _details = "Role: " + (player getVariable "WL_PlayerRole");};
+        if !(player getVariable ["WL_PlayerRole",""] isEqualTo "") exitWith { //Role Set, Initalize
+            if (serverCommandAvailable "#kick") then { //ServerAdmin, he grumpy
+                _details = "Grumpy " + (player getVariable "WL_PlayerRole");
+            } else {_details = (player getVariable "WL_PlayerRole"); //Normal Player
+            };
+        };
     };
 };
 
