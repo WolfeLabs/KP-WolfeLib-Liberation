@@ -5,15 +5,6 @@
 	
 */
 
-/*
-	TEAM DEV NOTES (Remove on release)
-	
-		-Leaders of all types, and Crewmen WILL MERGE/CONVERT to Rifleman Class. (mission.sqf)
-
-			This is done. -Wolfe
-
-*/
-
 waitUntil { alive player };
 sleep 2;
 
