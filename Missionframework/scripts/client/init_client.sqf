@@ -72,7 +72,7 @@ player addMPEventHandler ["MPKilled", {
     _killer = _this select 1;
     switch (side _killer) do {
         case GRLIB_side_friendly : {
-            ["Awaiting Respawn..", "Victim of Friendly Fire" ] call KPLIB_fnc_setDiscordState;
+            ["I Have no friends..", "Victim of Friendly Fire" ] call KPLIB_fnc_setDiscordState;
         };
         case GRLIB_side_enemy : {
             ["Awaiting Respawn..", "KIA by OPFOR" ] call KPLIB_fnc_setDiscordState;
