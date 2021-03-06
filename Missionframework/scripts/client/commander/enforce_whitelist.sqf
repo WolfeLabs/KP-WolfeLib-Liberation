@@ -49,7 +49,7 @@ if ( !isNull _target ) then {
 				};
 			};
 			
-			case "B_recon_F" : {
+			case "B_sniper_F" : {
 				if ( ( getPlayerUID _target ) in wolfeSnipers ) then {
 					_target setVariable ["WL_PlayerRole", "Sniper"];
 					_idmatch = true;
