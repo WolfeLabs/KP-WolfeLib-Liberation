@@ -192,7 +192,7 @@ joinUnassigned = 1;
 skipLobby = 0;
 
 // Defines if the map is shown after the mission starts.
-showMap = 1;
+showMap = 0;
 
 // Enable or disable availability of createVehicleLocal
 unsafeCVL = 1;
