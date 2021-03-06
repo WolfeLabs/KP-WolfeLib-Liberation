@@ -65,5 +65,7 @@ while {true} do {
     // Update state in Discord rich presence
     if (alive player) then {[] call KPLIB_fnc_setDiscordState};
 
+    [] call "Wolfe\roles\RPC_SetRank.sqf";
+
     sleep 1;
 };

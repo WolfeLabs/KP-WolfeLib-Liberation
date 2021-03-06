@@ -18,9 +18,7 @@
 
 params [
     ["_state", "", [""]],
-    ["_details", "", [""]],
-    ["_SIK", "", [""]],
-    ["_SIT", "", [""]]
+    ["_details", "", [""]]
 ];
 
 
@@ -40,20 +38,8 @@ if (_details isEqualTo  "") then {
     };
 };
 
-if (_SIK isEqualTo "") then {
-    [] call {
-        if !(player getVariable ["WL_PlayerRank", ""] isEqualTo "") exitWith {_SIK = player getVariable "WL_PlayerRank";}
-    };
-};
-
-if (_SIT isEqualTo "") then {
-    [] call {
-        if !(player getVariable ["WL_PlayerRankName", ""] isEqualTo "") exitWith {_SIT = player getVariable "WL_PlayerRankName";}
-    };
-};
-
 [
-    ["UpdateState", _state],["UpdateDetails", _details],["UpdateSmallImageKey", _SIK],["UpdateSmallImageText", _SIT]
+    ["UpdateState", _state],["UpdateDetails", _details]
 ] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);
 
 true

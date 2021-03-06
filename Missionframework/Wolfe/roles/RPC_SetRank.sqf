@@ -34,3 +34,20 @@ switch (_targetRank) do {
 	case "19": { setVariable["WL_PlayerRank","kpd19_ca"]; setVariable["WL_PlayerRankName",_targetRankName];};
 	default { setVariable["WL_PlayerRank", "a3_logo_whblk"];setVariable["WL_PlayerRankName","Mutt"];};
 };
+
+if (_SIK isEqualTo "") then {
+    [] call {
+        if !(player getVariable ["WL_PlayerRank", ""] isEqualTo "") exitWith {_SIK = player getVariable "WL_PlayerRank";}
+    };
+};
+
+if (_SIT isEqualTo "") then {
+    [] call {
+        if !(player getVariable ["WL_PlayerRankName", ""] isEqualTo "") exitWith {_SIT = player getVariable "WL_PlayerRankName";}
+    };
+};
+
+
+[
+["UpdateSmallImageKey", _SIK],["UpdateSmallImageText", _SIT]
+] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);
