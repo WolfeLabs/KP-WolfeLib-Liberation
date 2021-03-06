@@ -11,11 +11,12 @@
 
 	Usage: ["large","liberation1", "Liberation Logo"] call WL_RPC_SetImage;
 */
+waitUntil {alive player };
 
 params [
-    [_type, "large", ""],
-	[_imageKey, "a3_logo_whblk", ""],
-	[_imageText, "Arma 3", ""]
+    ["_type", "large", [""]],
+	["_imageKey", "a3_logo_whblk", [""]],
+	["_imageText", "Arma 3", [""]]
 ];
 
 switch (_type) do {
@@ -29,7 +30,4 @@ switch (_type) do {
 			["UpdateSmallImageKey", _imageKey],["UpdateSmallImageText",_imageText]
 		] call (missionNamespace getVariable ["DiscordRichPresence_fnc_update", {}]);
 	};
-	default { return false; };
 };
-
-true
