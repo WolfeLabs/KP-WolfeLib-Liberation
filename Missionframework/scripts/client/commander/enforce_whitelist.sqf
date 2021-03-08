@@ -11,6 +11,7 @@ _roleIDA = "";
 _finalRole = "err";
 _idmatch = false;
 _admin = false;
+_targetRank = [] call  KPR_fnc_getRank;
 
 if ( !isNull _target ) then {
 
@@ -91,7 +92,7 @@ if ( !isNull _target ) then {
 			};
 
 			case "B_recon_medic_F" : {
-				if ( _admin ) then {
+				if ( _admin || (_targetRank > =13 && in wolfeMedics)) then {
 					_roleID = "Paragod";
 					_idmatch = true;
 				};
