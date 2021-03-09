@@ -230,7 +230,11 @@ static_vehicles = [
     ["B_static_AA_F",50,100,0],                                         // Static Titan Launcher (AA)
     ["B_Mortar_01_F",80,150,0],                                         // Mk6 Mortar
     ["RHS_M119_WD",100,200,0],                                          // M119A2
-    ["B_SAM_System_03_F",250,500,0]                                     // MIM-145 Defender
+    ["B_SAM_System_03_F",250,500,0],                                    // MIM-145 Defender
+    //Wolfe
+    ["CUP_WV_B_CRAM",500,500,0],                                        // C-RAM
+    ["B_Static_Designator_01_F", 25,0,0],                               // Remote Designator [NATO]
+    ["B_AAA_System_01_F", 500,500,0]                                    // Praetorian 1C AAA
 ];
 
 buildings = [
