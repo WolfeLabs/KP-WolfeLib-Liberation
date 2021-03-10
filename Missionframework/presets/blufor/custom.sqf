@@ -207,7 +207,16 @@ air_vehicles = [
     ["B_Plane_Fighter_01_Stealth_F",1500,1750,450],                     // F/A-181 Black Wasp II (Stealth)
     ["B_T_VTOL_01_armed_F",750,1500,500],                               // V-44 X Blackfish (Armed)
     ["B_T_VTOL_01_infantry_F",750,0,500],                               // V-44 X Blackfish (Infantry)
-    ["B_T_VTOL_01_vehicle_F",750,0,500]                                 // V-44 X Blackfish (Vehicle)
+    ["B_T_VTOL_01_vehicle_F",750,0,500],                                 // V-44 X Blackfish (Vehicle)
+    //Wolfe
+    ["CUP_B_F35B_Stealth_USMC",1000,1200,400],                          // F-35B Lightning II (Stealth)
+    ["CUP_B_F35B_USMC",1500,1750,450],                                  // F-35B Lightning II
+    ["CUP_B_MH60L_DAP_2x_USN",450,400,250],                             // MH-60S Knighthawk (ESSS x2)
+    ["CUP_B_USMC_DYN_MQ9",500,500,200],                                 // MQ-9 Reaper
+    ["CUP_B_AV8B_DYN_USMC",1000,800,400],                               // AV-8B Harrier II
+    ["CUP_B_MH60S_FFV_USMC",250,25,200],                                // MH-60S Seahawk (FFV)
+    ["CUP_B_UH60S_USN",250,50,200]                                      // MH-60S Seahawk (M3M)    
+    
 ];
 
 static_vehicles = [
@@ -221,7 +230,11 @@ static_vehicles = [
     ["B_static_AA_F",50,100,0],                                         // Static Titan Launcher (AA)
     ["B_Mortar_01_F",80,150,0],                                         // Mk6 Mortar
     ["RHS_M119_WD",100,200,0],                                          // M119A2
-    ["B_SAM_System_03_F",250,500,0]                                     // MIM-145 Defender
+    ["B_SAM_System_03_F",250,500,0],                                    // MIM-145 Defender
+    //Wolfe
+    ["CUP_WV_B_CRAM",500,500,0],                                        // C-RAM
+    ["B_Static_Designator_01_F", 25,0,0],                               // Remote Designator [NATO]
+    ["B_AAA_System_01_F", 500,500,0]                                    // Praetorian 1C AAA
 ];
 
 buildings = [

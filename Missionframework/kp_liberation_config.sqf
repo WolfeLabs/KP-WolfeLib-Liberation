@@ -202,11 +202,11 @@ GRLIB_color_friendly = "ColorBLUFOR";                                   // Frien
 GRLIB_color_enemy = "ColorOPFOR";                                       // Enemy sector marker color.
 GRLIB_color_enemy_bright = "ColorRED";                                  // Enemy sector marker color (activated).
 
-GRLIB_fob_range = 125;                                                  // Build range around the main FOB building.
+GRLIB_fob_range = 250;                                                  // Build range around the main FOB building.
 GRLIB_halo_altitude = 2500;                                             // Altitude in metres for the HALO jump.
 GRLIB_secondary_missions_costs = [15, 10, 8];                           // Intel price for the secondary missions [FOB hunting, Convoy ambush, SAR].
 GRLIB_secondary_objective_impact = 0.6;                                 // The percentage impact against enemy combat readiness for a successful FOB hunt.
-GRLIB_recycling_percentage = 0.5;                                       // Percentage of resources you get back from recycling.
+GRLIB_recycling_percentage = 0.75;                                      // Percentage of resources you get back from recycling.
 KP_liberation_production_interval = 30;                                 // Time in minutes until a production process is finished, when resources multiplier is set to 1.
 
 GRLIB_sector_size = 1000;                                               // Range to activate a sector.
@@ -266,12 +266,17 @@ KP_liberation_commander_actions = [
     "5468711",
     "2156347"
     */
+    "76561198076424327", //"Patches"
+    "76561197964255133" //"Reaper"
 ];
 
 /* Whitelist for BI support framework access.
 Same format as for the commander actions. */
 KP_liberation_suppMod_whitelist = [
-
+    
+    "76561198076424327", //"Patches"
+    "76561197964255133", //"Reaper"
+    "76561198136964498" //"Viking Actual" | "Odin Actual"
 ];
 
 /* Array of radio tower classnames to place at radio tower sectors.

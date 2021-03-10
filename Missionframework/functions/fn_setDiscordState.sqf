@@ -29,6 +29,18 @@ if (_state isEqualTo "") then {
                 ["large","startbase","USS Yiff"] call WL_RPC_SetImage;
                 _state = "Aboard the USS Yiff";
         };
+        if (vehicle player isKindOf "Steerable_Parachute_F") exitWith { //HALO
+        _state = "Parachuting in the field";
+        _prefix = "Dropping in near ";
+            if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith { //Dropping near Sectors
+                ["large","parachute","Dropping in to AO"] call WL_RPC_SetImage;
+                _zoneSite = (markerText (player getVariable "KPLIB_nearSector"));
+                _state = _prefix + _zoneSite; 
+            };
+            if (_state isEqualTo "Flying between sectors") then { //Dropping Elsewhere
+                ["large", "parachute", "Parachuting"] call WL_RPC_SetImage;
+            };
+        };
         if (vehicle player isKindOf "Air") exitWith { //Flying
             _state = "Flying between sectors";
             _prefix = "Flying near ";
@@ -49,12 +61,22 @@ if (_state isEqualTo "") then {
         if !(player getVariable ["KPLIB_fobName", ""] isEqualTo "") exitWith { //Near FOB
                 ["large","liberation1","In Game"] call WL_RPC_SetImage;
                 _prefix = "At ";
-                _fobName = str (player getVariable "KPLIB_fobName");
+                _fobName = (player getVariable "KPLIB_fobName");
                 _state = _prefix + _fobName;
         };
         if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith { //In Sector
                 ["large","liberation1","In Game"] call WL_RPC_SetImage;
-                _zoneOwned = "";
+                _zoneOwned = "Near ";
+                _zoneSite = "UKN SEC";
+                _nearest_active_sector = "NEARESTNULL";
+                _zone_size = "999";
+
+                    _nearest_active_sector = [GRLIB_sector_size] call KPLIB_fnc_getNearestSector; // Get Nearest Active Sector
+                    _zone_size = GRLIB_capture_size; //Set the zone size
+                    if ( _nearest_active_sector in sectors_bigtown ) then { //Big boi
+                        _zone_size = GRLIB_capture_size * 1.4; //Set zone size for big boi
+                    };
+
                     if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_friendly ) then { _zoneOwned = "Patrolling "};
                     if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_enemy ) then { _zoneOwned = "Attacking " };
                     if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_resistance ) then { _zoneOwned = "Attacking "};
