@@ -66,7 +66,17 @@ if (_state isEqualTo "") then {
         };
         if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith { //In Sector
                 ["large","liberation1","In Game"] call WL_RPC_SetImage;
-                _zoneOwned = "";
+                _zoneOwned = "Near ";
+                _zoneSite = "UKN SEC";
+                _nearest_active_sector = "NEARESTNULL";
+                _zone_size = "999";
+
+                    _nearest_active_sector = [GRLIB_sector_size] call KPLIB_fnc_getNearestSector; // Get Nearest Active Sector
+                    _zone_size = GRLIB_capture_size; //Set the zone size
+                    if ( _nearest_active_sector in sectors_bigtown ) then { //Big boi
+                        _zone_size = GRLIB_capture_size * 1.4; //Set zone size for big boi
+                    };
+
                     if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_friendly ) then { _zoneOwned = "Patrolling "};
                     if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_enemy ) then { _zoneOwned = "Attacking " };
                     if ( [ markerpos _nearest_active_sector, _zone_size ] call KPLIB_fnc_getSectorOwnership == GRLIB_side_resistance ) then { _zoneOwned = "Attacking "};
