@@ -120,6 +120,28 @@ _player addAction [
     "
 ];
 
+// Radio Freqs bro ~Wolfe
+_player addAction [
+    ["<t color='#FFFF00'>", localize "STR_GRABS_YOUR_RADIO_UWU", "</t><img size='2' image='res\ui_radio.paa'/>"] joinString "",
+    "Wolfe\radio\setRadioFreq.sqf",
+    nil,
+    -745,
+    false,
+    true,
+    "",
+    "
+        isNull (objectParent _originalTarget)
+        && {alive _originalTarget}
+        && {
+            _originalTarget getVariable ['KPLIB_fobDist', 99999] < 20
+            || {_originalTarget getVariable ['KPLIB_isNearArsenal', false]}
+            || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
+            || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
+        }
+        && {build_confirmed isEqualTo 0}
+    "
+];
+
 // Build
 _player addAction [
     ["<t color='#FFFF00'>", localize "STR_BUILD_ACTION", "</t><img size='2' image='res\ui_build.paa'/>"] joinString "",
