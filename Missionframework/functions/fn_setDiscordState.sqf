@@ -61,7 +61,7 @@ if (_state isEqualTo "") then {
         if !(player getVariable ["KPLIB_fobName", ""] isEqualTo "") exitWith { //Near FOB
                 ["large","liberation1","In Game"] call WL_RPC_SetImage;
                 _prefix = "At ";
-                _fobName = str (player getVariable "KPLIB_fobName");
+                _fobName = (player getVariable "KPLIB_fobName");
                 _state = _prefix + _fobName;
         };
         if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith { //In Sector
