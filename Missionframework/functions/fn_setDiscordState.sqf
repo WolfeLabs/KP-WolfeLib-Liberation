@@ -29,6 +29,18 @@ if (_state isEqualTo "") then {
                 ["large","startbase","USS Yiff"] call WL_RPC_SetImage;
                 _state = "Aboard the USS Yiff";
         };
+        if (vehicle player isKindOf "Steerable_Parachute_F") exitWith { //HALO
+        _state = "Parachuting in the field";
+        _prefix = "Dropping in near ";
+            if !(player getVariable ["KPLIB_nearSector", ""] isEqualTo "") exitWith { //Dropping near Sectors
+                ["large","parachute","Dropping in to AO"] call WL_RPC_SetImage;
+                _zoneSite = (markerText (player getVariable "KPLIB_nearSector"));
+                _state = _prefix + _zoneSite; 
+            };
+            if (_state isEqualTo "Flying between sectors") then { //Dropping Elsewhere
+                ["large", "parachute", "Parachuting"] call WL_RPC_SetImage;
+            };
+        };
         if (vehicle player isKindOf "Air") exitWith { //Flying
             _state = "Flying between sectors";
             _prefix = "Flying near ";
