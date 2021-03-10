@@ -227,7 +227,7 @@ class CfgDebriefing {
 class CfgDiscordRichPresence {
     applicationID="816891452012494918";
     defaultDetails="Waiting for role..";
-    defaultState="Preparing...";
+    defaultState="Loading In...";
     defaultLargeImageKey="liberation1";
     defaultLargeImageText="KP/WolfeLib Liberation";
     defaultSmallImageKey="a3_logo_whblk";
